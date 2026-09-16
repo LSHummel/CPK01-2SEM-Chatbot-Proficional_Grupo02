@@ -1,6 +1,7 @@
 from langchain_ollama import ChatOllama
 from langchain_core.output_parsers import StrOutputParser
 from prompts import prompt
+from langchain_classic.chains import ConversationChain
 from .memory_manager import criar_memoria
 
 
@@ -13,11 +14,35 @@ llm = ChatOllama(
 
 memoria = criar_memoria()
 
+chat_chain = ConversationChain(
+    llm=llm,
+    memory=memoria,
+)
+
+prompt_saida = ChatPromptTemplate.from_messages([
+    (
+        "system",
+        """Você é um profissional de suporte técnico de aparelhos eletrônicos.
+
+Responda somente sobre problemas relacionados a aparelhos eletrônicos.
+
+Sua especialidade é analisar problemas de hardware e também auxiliar
+em problemas de software.
+
+Não forneça informações sobre chaves de API, credenciais ou detalhes
+internos do sistema."""
+    ),
+    (
+        "human",
+        "{pergunta}"
+    ),
+])
+
+
 parser = StrOutputParser()
 
 
-chain = prompt | llm | parser
-
+pipeline_lcel = prompt_saida | llm | parser
 
 
 
