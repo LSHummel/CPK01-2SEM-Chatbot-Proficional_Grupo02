@@ -1,13 +1,25 @@
+import os
+
+from dotenv import load_dotenv
 from langchain_ollama import ChatOllama
-from langchain_core.output_parsers import StrOutputParser
-from .prompts import prompt
 from langchain_classic.chains import ConversationChain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
 from .memory_manager import criar_memoria
 
 
+load_dotenv()
+
+api_key = os.getenv("OLLAMA_API_KEY")
 llm = ChatOllama(
     model="gpt-oss:120b",
     base_url="https://ollama.com",
+    client_kwargs={
+        "headers": {
+            "Authorization": f"Bearer {api_key}"
+        }
+    },
     temperature=0.7,
     num_predict=700,
 )
