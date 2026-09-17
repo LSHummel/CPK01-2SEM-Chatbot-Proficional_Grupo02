@@ -3,12 +3,12 @@
 **Prompt Engineering & AI · FIAP · 2º Semestre 2026**
 
 **Integrantes:**  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX
-
-> **Importante:** substitua os nomes/RMs acima pelos integrantes reais do grupo antes da entrega. Eles não foram informados nos arquivos-base disponibilizados.
+- Gabriel Camarosani Gouvea Gonçalves da Silva — RM 569189
+- Gustavo Lima Andrade Santos — RM 571709 
+- Lucas Seiji Hummel — RM 569673 
+- Pedro Souza Castro — RM 569311
+- Bruno Yudi Moritaka Kanashiro — RM 571776
+- Lucas Barreto Santana — RM 573149
 
 ## Domínio
 
