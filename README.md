@@ -172,12 +172,12 @@ O resultado é gerado pelo modelo no momento da execução. Assim, a tabela apre
 
 ## Meta prompting
 
-O arquivo `app/meta_prompting.py` aplica a técnica apresentada na Aula 04: o próprio modelo recebe o system prompt atual e produz uma versão otimizada.
+O arquivo `app/metaprompting.py` aplica a técnica apresentada na Aula 04: o próprio modelo recebe o system prompt atual e produz uma versão otimizada.
 
 Execute:
 
 ```powershell
-python -m app.meta_prompting
+python -m app.metaprompting
 ```
 
 O resultado contém:
@@ -210,7 +210,7 @@ CKP01_Aparelhos_Eletronicos_Grupo02/
 │   ├── memory_manager.py
 │   ├── schemas.py
 │   ├── context_rot.py
-│   ├── meta_prompting.py
+│   ├── metaprompting.py
 │   └── prompts.py
 ├── .env.example
 ├── requirements.txt
@@ -270,7 +270,7 @@ python -m app.context_rot
 ### 6. Executar o meta prompting
 
 ```powershell
-python -m app.meta_prompting
+python -m app.metaprompting
 ```
 
 ## Dependências
