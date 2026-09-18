@@ -20,20 +20,17 @@ if not api_key:
     )
 
 
+os.environ["OLLAMA_HOST"] = "https://ollama.com"
+os.environ["OLLAMA_API_KEY"] = api_key
+
+
 llm = ChatOllama(
     model="gemma4:cloud",
-    base_url="https://ollama.com",
-    client_kwargs={
-        "headers": {
-            "Authorization": f"Bearer {api_key}"
-        }
-    },
     temperature=0.7,
     num_predict=700,
 )
 
 
-# Chain 1: conversa com memória gerenciada.
 memoria = criar_memoria()
 
 chat_chain = ConversationChain(
@@ -44,7 +41,6 @@ chat_chain = ConversationChain(
 )
 
 
-# Chain 2: saída estruturada para consumo pelo código.
 parser = PydanticOutputParser(pydantic_object=AnaliseAtendimento)
 
 analise_chain = (
@@ -63,3 +59,4 @@ def analisar_atendimento(pergunta, resposta):
         "pergunta": pergunta,
         "resposta": resposta,
     })
+

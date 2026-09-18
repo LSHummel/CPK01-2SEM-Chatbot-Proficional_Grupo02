@@ -36,7 +36,7 @@ def iniciar_chat():
         resposta = chat_chain.predict(input=pergunta)
         print(f"Assistente: {resposta}\n")
 
-        # Demonstra a segunda chain: texto livre -> Pydantic validado.
+
         try:
             analise = analisar_atendimento(pergunta, resposta)
             print("Análise estruturada:")

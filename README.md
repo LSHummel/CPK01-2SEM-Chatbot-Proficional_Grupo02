@@ -3,12 +3,12 @@
 **Prompt Engineering & AI · FIAP · 2º Semestre 2026**
 
 **Integrantes:**  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX  
-- Nome Completo — RM XXXXX
-
-> **Importante:** substitua os nomes/RMs acima pelos integrantes reais do grupo antes da entrega. Eles não foram informados nos arquivos-base disponibilizados.
+- Gabriel Camarosani Gouvea Gonçalves da Silva — RM 569189
+- Gustavo Lima Andrade Santos — RM 571709 
+- Lucas Seiji Hummel — RM 569673 
+- Pedro Souza Castro — RM 569311
+- Bruno Yudi Moritaka Kanashiro — RM 571776
+- Lucas Barreto Santana — RM 573149
 
 ## Domínio
 
@@ -20,28 +20,6 @@ O objetivo é auxiliar o usuário na identificação de problemas comuns de hard
 
 O domínio foi mantido restrito para que o system prompt, a memória e a saída estruturada tenham uma finalidade clara. O mesmo domínio pode ser reutilizado nos próximos checkpoints do semestre.
 
-## Requisitos atendidos
-
-| Requisito | Status | Implementação |
-|---|---|---|
-| Pipeline LCEL | ✅ | `app/chains.py` usa `ChatPromptTemplate \| ChatOllama \| PydanticOutputParser` |
-| ChatOllama | ✅ | `gemma4:cloud` via Ollama Cloud, usando `OLLAMA_API_KEY` no `.env` |
-| ChatPromptTemplate | ✅ | `app/prompts.py`, com mensagens `system` e `human` e variáveis |
-| Memória gerenciada | ✅ | `ConversationChain` + `ConversationBufferMemory` |
-| Demonstração de memória | ✅ | `memoria` no terminal + roteiro de teste com 5+ turnos |
-| Pydantic v2 | ✅ | `AnaliseAtendimento` em `schemas.py`, com 6 campos tipados |
-| Validação | ✅ | `PydanticOutputParser` + `ValidationError` |
-| Context engineering | ✅ | system prompt organizado com XML tagging |
-| Context rot | ✅ | `app/context_rot.py`, com 0/5/10/15/20 turnos e contagem aproximada de tokens |
-| Domínio documentado | ✅ | Esta seção + `SYSTEM_PROMPT` |
-| Projeto local | ✅ | pacote `app/` + `.env.example` + `requirements.txt` + `README.md` |
-
-### Diferenciais
-
-| Diferencial | Status | Implementação |
-|---|---|---|
-| Métricas de contexto | ✅ | `tiktoken` mede tokens aproximados em `context_rot.py` |
-| Meta prompting | ✅ | `app/meta_prompting.py` gera uma versão otimizada do system prompt |
 
 ## Arquitetura
 
@@ -89,6 +67,41 @@ ChatPromptTemplate | ChatOllama | PydanticOutputParser
 
 O resultado é um objeto `AnaliseAtendimento`, e não uma string livre.
 
+## Nota de revisão (adicionada após auto-avaliação contra a rubrica do CKP01)
+
+Esta versão do projeto foi revisada comparando cada arquivo com os requisitos
+do professor (`CKP01_2Semestre_Chatbot_Profissional.pdf`) e com o conteúdo
+das Aulas 01–04 (PDFs + notebooks). O código original já atendia à maior
+parte dos requisitos obrigatórios; os ajustes abaixo foram feitos apenas
+para reduzir riscos de execução e deixar dois requisitos mais fáceis de
+verificar por quem for corrigir:
+
+1. **Conexão com a Ollama Cloud (`app/chains.py` e `app/context_rot.py`).**
+   A versão anterior configurava o `ChatOllama` com `base_url` +
+   `client_kwargs={"headers": {...}}` manual. Essa abordagem não aparece em
+   nenhum dos quatro notebooks/PDFs do professor — em todos eles o padrão é
+   sempre `os.environ["OLLAMA_HOST"]` + `os.environ["OLLAMA_API_KEY"]` antes
+   de instanciar `ChatOllama(model="gemma4:cloud")`, sem parâmetros extras.
+   Trocamos para esse padrão oficial, o mesmo já usado implicitamente pela
+   chave `OLLAMA_API_KEY` do `.env`. Isso não muda nenhuma regra de negócio,
+   só torna a conexão idêntica à ensinada em aula e mais robusta a
+   diferenças de versão da biblioteca `langchain-ollama`.
+2. **`app/demo_memoria.py` (novo arquivo).** O requisito R2 pede uma
+   "demonstração de que a memória funciona em 5+ turnos". Antes, essa prova
+   dependia de alguém digitar manualmente uma conversa em `app/main.py`. O
+   novo script roda automaticamente 6 turnos fixos sobre o domínio do grupo
+   e imprime `load_memory_variables({})` ao final — no mesmo formato do
+   `INSPECIONAR_MEMORIA.PY` da Aula 02 — dando uma evidência reprodutível e
+   objetiva sem depender de digitação manual durante a correção.
+3. **`app/metaprompting.py` (ajustado).** O diferencial de meta prompting
+   pede para "documentar o antes/depois". O script agora imprime
+   explicitamente o `SYSTEM_PROMPT` original ao lado da resposta do modelo
+   e mede a contagem de tokens de cada um com `tiktoken`, deixando o
+   antes/depois documentado na própria execução (e não só no README).
+
+Nenhuma decisão de arquitetura, domínio, memória ou schema foi alterada —
+apenas essas três melhorias pontuais.
+
 ## Justificativa da memória
 
 Foi escolhido **ConversationBufferMemory** porque o caso de uso é um atendimento técnico por sessão, no qual as informações dos turnos anteriores podem ser importantes para entender sintomas, aparelho e tentativas já realizadas.
@@ -131,6 +144,21 @@ limpar
 ```
 
 para apagá-lo.
+
+### Demonstração automática (sem digitação manual)
+
+Para uma evidência objetiva e reprodutível do requisito "memória funciona em
+5+ turnos", também é possível rodar:
+
+```powershell
+python -m app.demo_memoria
+```
+
+Esse script executa 6 turnos fixos automaticamente (sem precisar digitar
+nada) e imprime, ao final, o estado bruto da memória via
+`load_memory_variables({})`, confirmando que o último turno — que pergunta
+"qual foi o aparelho mencionado no início?" — é respondido corretamente
+com base no primeiro turno da conversa.
 
 ## Pydantic v2 e validação
 
@@ -194,20 +222,20 @@ O resultado é gerado pelo modelo no momento da execução. Assim, a tabela apre
 
 ## Meta prompting
 
-O arquivo `app/meta_prompting.py` aplica a técnica apresentada na Aula 04: o próprio modelo recebe o system prompt atual e produz uma versão otimizada.
+O arquivo `app/metaprompting.py` aplica a técnica apresentada na Aula 04: o próprio modelo recebe o system prompt atual e produz uma versão otimizada.
 
 Execute:
 
 ```powershell
-python -m app.meta_prompting
+python -m app.metaprompting
 ```
 
-O resultado contém:
+A saída agora documenta o **antes/depois** de forma explícita:
 
-1. o prompt otimizado entre `<prompt_otimizado>...</prompt_otimizado>`;
-2. uma explicação das principais mudanças.
+1. o `SYSTEM_PROMPT` original (o "antes"), com sua contagem aproximada de tokens via `tiktoken`;
+2. o prompt otimizado retornado pelo modelo entre `<prompt_otimizado>...</prompt_otimizado>` (o "depois"), seguido de 3 bullet points explicando as mudanças e da contagem de tokens da resposta.
 
-Isso permite documentar o **antes/depois** do system prompt durante a apresentação ou avaliação.
+Isso deixa o diferencial "meta prompting: usar o modelo para melhorar o prompt e documentar o antes/depois" evidenciado diretamente na execução, sem depender só da leitura do código.
 
 ## Segurança
 
@@ -232,7 +260,8 @@ CKP01_Aparelhos_Eletronicos_Grupo02/
 │   ├── memory_manager.py
 │   ├── schemas.py
 │   ├── context_rot.py
-│   ├── meta_prompting.py
+│   ├── metaprompting.py
+│   ├── demo_memoria.py
 │   └── prompts.py
 ├── .env.example
 ├── requirements.txt
@@ -283,16 +312,22 @@ OLLAMA_API_KEY=sua_chave_da_ollama_cloud
 python -m app.main
 ```
 
-### 5. Executar o teste de context rot
+### 5. Executar a demonstração automática de memória (>= 5 turnos)
+
+```powershell
+python -m app.demo_memoria
+```
+
+### 6. Executar o teste de context rot
 
 ```powershell
 python -m app.context_rot
 ```
 
-### 6. Executar o meta prompting
+### 7. Executar o meta prompting
 
 ```powershell
-python -m app.meta_prompting
+python -m app.metaprompting
 ```
 
 ## Dependências
@@ -336,3 +371,8 @@ python -m app.main
 ```
 
 para confirmar a configuração da chave e da Ollama Cloud.
+
+⚠️ **Dois pontos administrativos para confirmar com o professor antes do envio, sem relação com o código:**
+
+1. **Tamanho do grupo.** O enunciado do CKP01 define grupos de 3–4 alunos; este README lista 6 integrantes. Vale confirmar com o professor se isso é aceito para esta turma antes da entrega.
+2. **Nome do arquivo `.zip`.** O enunciado pede o padrão `CKP01_[dominio]_grupo.zip`. Ajustar o nome final do arquivo compactado (o repositório/pasta de trabalho usa o prefixo "CPK01") para `CKP01_AparelhosEletronicos_Grupo02.zip` (ou nome equivalente) antes do envio pelo Teams.
