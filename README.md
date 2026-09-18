@@ -67,41 +67,6 @@ ChatPromptTemplate | ChatOllama | PydanticOutputParser
 
 O resultado é um objeto `AnaliseAtendimento`, e não uma string livre.
 
-## Nota de revisão (adicionada após auto-avaliação contra a rubrica do CKP01)
-
-Esta versão do projeto foi revisada comparando cada arquivo com os requisitos
-do professor (`CKP01_2Semestre_Chatbot_Profissional.pdf`) e com o conteúdo
-das Aulas 01–04 (PDFs + notebooks). O código original já atendia à maior
-parte dos requisitos obrigatórios; os ajustes abaixo foram feitos apenas
-para reduzir riscos de execução e deixar dois requisitos mais fáceis de
-verificar por quem for corrigir:
-
-1. **Conexão com a Ollama Cloud (`app/chains.py` e `app/context_rot.py`).**
-   A versão anterior configurava o `ChatOllama` com `base_url` +
-   `client_kwargs={"headers": {...}}` manual. Essa abordagem não aparece em
-   nenhum dos quatro notebooks/PDFs do professor — em todos eles o padrão é
-   sempre `os.environ["OLLAMA_HOST"]` + `os.environ["OLLAMA_API_KEY"]` antes
-   de instanciar `ChatOllama(model="gemma4:cloud")`, sem parâmetros extras.
-   Trocamos para esse padrão oficial, o mesmo já usado implicitamente pela
-   chave `OLLAMA_API_KEY` do `.env`. Isso não muda nenhuma regra de negócio,
-   só torna a conexão idêntica à ensinada em aula e mais robusta a
-   diferenças de versão da biblioteca `langchain-ollama`.
-2. **`app/demo_memoria.py` (novo arquivo).** O requisito R2 pede uma
-   "demonstração de que a memória funciona em 5+ turnos". Antes, essa prova
-   dependia de alguém digitar manualmente uma conversa em `app/main.py`. O
-   novo script roda automaticamente 6 turnos fixos sobre o domínio do grupo
-   e imprime `load_memory_variables({})` ao final — no mesmo formato do
-   `INSPECIONAR_MEMORIA.PY` da Aula 02 — dando uma evidência reprodutível e
-   objetiva sem depender de digitação manual durante a correção.
-3. **`app/metaprompting.py` (ajustado).** O diferencial de meta prompting
-   pede para "documentar o antes/depois". O script agora imprime
-   explicitamente o `SYSTEM_PROMPT` original ao lado da resposta do modelo
-   e mede a contagem de tokens de cada um com `tiktoken`, deixando o
-   antes/depois documentado na própria execução (e não só no README).
-
-Nenhuma decisão de arquitetura, domínio, memória ou schema foi alterada —
-apenas essas três melhorias pontuais.
-
 ## Justificativa da memória
 
 Foi escolhido **ConversationBufferMemory** porque o caso de uso é um atendimento técnico por sessão, no qual as informações dos turnos anteriores podem ser importantes para entender sintomas, aparelho e tentativas já realizadas.
@@ -260,7 +225,8 @@ CKP01_Aparelhos_Eletronicos_Grupo02/
 │   ├── memory_manager.py
 │   ├── schemas.py
 │   ├── context_rot.py
-│   ├── meta_prompting.py
+│   ├── metaprompting.py
+│   ├── demo_memoria.py
 │   └── prompts.py
 ├── .env.example
 ├── requirements.txt
@@ -370,8 +336,3 @@ python -m app.main
 ```
 
 para confirmar a configuração da chave e da Ollama Cloud.
-
-⚠️ **Dois pontos administrativos para confirmar com o professor antes do envio, sem relação com o código:**
-
-1. **Tamanho do grupo.** O enunciado do CKP01 define grupos de 3–4 alunos; este README lista 6 integrantes. Vale confirmar com o professor se isso é aceito para esta turma antes da entrega.
-2. **Nome do arquivo `.zip`.** O enunciado pede o padrão `CKP01_[dominio]_grupo.zip`. Ajustar o nome final do arquivo compactado (o repositório/pasta de trabalho usa o prefixo "CPK01") para `CKP01_AparelhosEletronicos_Grupo02.zip` (ou nome equivalente) antes do envio pelo Teams.
