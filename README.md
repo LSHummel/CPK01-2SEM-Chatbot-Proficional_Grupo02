@@ -20,28 +20,6 @@ O objetivo é auxiliar o usuário na identificação de problemas comuns de hard
 
 O domínio foi mantido restrito para que o system prompt, a memória e a saída estruturada tenham uma finalidade clara. O mesmo domínio pode ser reutilizado nos próximos checkpoints do semestre.
 
-## Requisitos atendidos
-
-| Requisito | Status | Implementação |
-|---|---|---|
-| Pipeline LCEL | ✅ | `app/chains.py` usa `ChatPromptTemplate \| ChatOllama \| PydanticOutputParser` |
-| ChatOllama | ✅ | `gemma4:cloud` via Ollama Cloud, usando `OLLAMA_API_KEY` no `.env` |
-| ChatPromptTemplate | ✅ | `app/prompts.py`, com mensagens `system` e `human` e variáveis |
-| Memória gerenciada | ✅ | `ConversationChain` + `ConversationBufferMemory` |
-| Demonstração de memória | ✅ | `memoria` no terminal + roteiro de teste com 5+ turnos |
-| Pydantic v2 | ✅ | `AnaliseAtendimento` em `schemas.py`, com 6 campos tipados |
-| Validação | ✅ | `PydanticOutputParser` + `ValidationError` |
-| Context engineering | ✅ | system prompt organizado com XML tagging |
-| Context rot | ✅ | `app/context_rot.py`, com 0/5/10/15/20 turnos e contagem aproximada de tokens |
-| Domínio documentado | ✅ | Esta seção + `SYSTEM_PROMPT` |
-| Projeto local | ✅ | pacote `app/` + `.env.example` + `requirements.txt` + `README.md` |
-
-### Diferenciais
-
-| Diferencial | Status | Implementação |
-|---|---|---|
-| Métricas de contexto | ✅ | `tiktoken` mede tokens aproximados em `context_rot.py` |
-| Meta prompting | ✅ | `app/meta_prompting.py` gera uma versão otimizada do system prompt |
 
 ## Arquitetura
 
