@@ -260,8 +260,7 @@ CKP01_Aparelhos_Eletronicos_Grupo02/
 │   ├── memory_manager.py
 │   ├── schemas.py
 │   ├── context_rot.py
-│   ├── metaprompting.py
-│   ├── demo_memoria.py
+│   ├── meta_prompting.py
 │   └── prompts.py
 ├── .env.example
 ├── requirements.txt
