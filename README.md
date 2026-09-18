@@ -316,20 +316,6 @@ gemma4:cloud
 
 por meio da Ollama Cloud, com a chave armazenada em variável de ambiente.
 
-## Observações para a entrega
-
-O arquivo `.env` não deve ser incluído na entrega.
-
-A estrutura final para o `.zip` deve conter:
-
-```text
-app/
-.env.example
-requirements.txt
-README.md
-```
-
-Antes de entregar, substituir os nomes e RMs dos integrantes no README e executar pelo menos uma vez:
 
 ```powershell
 python -m app.main
