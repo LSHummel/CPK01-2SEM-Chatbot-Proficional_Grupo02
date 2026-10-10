@@ -1,0 +1,40 @@
+Produto: Positivo Smart Roteador Mesh.
+Fonte: guia-rapido-roteador-mesh-v2.pdf.
+
+CONFIGURAR A REDE WI-FI
+Baixe o aplicativo Positivo Casa Inteligente e crie uma conta.
+Conecte o celular à rede Wi-Fi do roteador.
+No aplicativo, selecione Novo roteador e depois Roteador principal.
+Siga as instruções para configurar o nome e a senha da rede.
+
+O roteador permite redes Wi-Fi de 2,4 GHz e 5 GHz.
+As configurações de nome e senha podem ser ajustadas no aplicativo ou na interface web.
+
+ACESSAR A INTERFACE WEB
+Acesse o endereço 192.168.10.1 pelo navegador.
+As credenciais padrão indicadas são usuário admin e senha Positivo. Confira também a etiqueta do produto.
+
+CONEXÃO COM A INTERNET
+A conexão WAN pode usar DHCP, PPPoE, IP estático, PPTP ou L2TP.
+No modo PPPoE, informe o usuário e a senha fornecidos pelo provedor.
+
+ADICIONAR UM ROTEADOR À REDE MESH
+Mantenha o novo roteador ligado e sem conexão por cabo Ethernet durante a sincronização.
+No aplicativo, selecione Adicionar roteador na rede e depois Roteador Agente na rede mesh.
+Pressione o botão WPS na parte traseira do roteador controlador, que é o principal conectado ao modem.
+Repita o procedimento no roteador agente.
+Aguarde até que as luzes dos dois aparelhos fiquem verdes.
+
+REINICIAR O ROTEADOR
+Use a opção Reiniciar roteador no aplicativo ou acesse Gerenciamento > Dispositivo na interface web.
+
+RESTAURAR CONFIGURAÇÕES
+Na interface web, acesse Gerenciamento > Dispositivo > Restaurar configurações.
+
+ATUALIZAR O FIRMWARE
+A atualização pode ser realizada pelo aplicativo ou pela interface web.
+Não desligue o roteador durante a atualização.
+
+CONFIGURAÇÕES AVANÇADAS
+É possível ajustar canal e potência do Wi-Fi.
+Alterações indevidas nas configurações avançadas podem causar mau funcionamento.

@@ -1,0 +1,36 @@
+Produto: Epson L3250 / L3251.
+Fonte: cpd60186.pdf.
+
+LIMPAR O CABEÇOTE DE IMPRESSÃO
+Verifique se a impressora não apresenta erros.
+Mantenha pressionado o botão Cancelar por 5 segundos para iniciar a limpeza.
+O indicador de energia pisca durante o procedimento.
+Depois da limpeza, faça uma verificação dos jatos para conferir a qualidade de impressão.
+
+A limpeza também pode ser iniciada pela opção de limpeza do cabeçote no utilitário de manutenção da impressora no computador.
+
+VERIFICAR OS JATOS
+A verificação dos jatos permite identificar falhas no padrão de impressão.
+Ela pode ser executada pelo utilitário de manutenção da impressora no computador.
+Se houver falhas no padrão, execute a limpeza do cabeçote.
+
+QUANDO A LIMPEZA NÃO RESOLVER
+Se a qualidade não melhorar após até três limpezas, aguarde pelo menos 12 horas antes de tentar novamente.
+A limpeza intensa é uma opção de manutenção para situações em que a limpeza normal não resolve ou o padrão de verificação apresenta muitas falhas.
+
+CONFIGURAR WI-FI POR WPS
+Pressione o botão WPS do roteador.
+Na impressora, mantenha pressionado o botão Wi-Fi por 5 segundos.
+
+IMPRIMIR INFORMAÇÕES DA REDE
+Mantenha pressionado o botão de status da rede por 7 segundos para imprimir a folha de estado da rede.
+Pressione brevemente esse botão para imprimir o relatório de conexão.
+
+COLOCAR PAPEL
+Coloque o papel no alimentador traseiro.
+Ajuste as guias laterais sem apertar demais o papel.
+A capacidade indicada é de até 100 folhas de papel comum ou 10 envelopes.
+
+IMPRESSÃO COM FAIXAS OU BORRÕES
+Verifique os jatos e faça a limpeza do cabeçote quando necessário.
+Confira se o tipo de papel selecionado no software corresponde ao papel colocado na impressora.

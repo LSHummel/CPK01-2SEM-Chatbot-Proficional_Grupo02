@@ -1,0 +1,37 @@
+Produto: Motorola One.
+Fonte: manual-motorola-one.pdf.
+
+REINICIAR O TELEFONE TRAVADO
+Caso o Motorola One pare de responder a toques ou ao pressionamento dos botões, mantenha pressionado o botão liga/desliga até a tela escurecer e o telefone reiniciar.
+
+REINICIAR NORMALMENTE
+Mantenha pressionado o botão liga/desliga e toque em Reiniciar.
+
+APLICATIVO CAUSANDO TRAVAMENTO
+Para iniciar o telefone no modo de segurança, mantenha pressionado o botão liga/desliga. Quando aparecer a opção Desligar, mantenha essa opção pressionada e toque em OK.
+Após reiniciar no modo de segurança, tente remover o aplicativo que está causando o problema.
+Para sair do modo de segurança, reinicie o telefone.
+
+CONECTAR AO WI-FI
+Acesse Configurar > Rede e Internet > Wi-Fi.
+Ative o Wi-Fi e toque na rede desejada para conectar.
+
+ECONOMIA DE BATERIA
+Acesse Configurar > Bateria > Economia de bateria e ative a opção.
+Para verificar o consumo, acesse Configurar > Bateria > DETALHES DE USO.
+Reduza o uso de widgets que atualizam informações, contas não utilizadas e gravação ou transmissão de vídeos e músicas.
+
+ATUALIZAR O SISTEMA
+Acesse Configurar > Sistema > Atualizações do sistema.
+Prefira baixar atualizações por Wi-Fi e mantenha carga suficiente na bateria para concluir a atualização.
+
+RESTAURAR AS CONFIGURAÇÕES DE FÁBRICA
+Acesse Configurar > Sistema > Restaurar opções > Apagar todos os dados (restauração de fábrica).
+Atenção: todos os aplicativos baixados e dados de usuário armazenados no telefone serão apagados. Os dados na nuvem não serão excluídos.
+
+FAZER BACKUP
+Acesse Configurar > Sistema > Backup e ative Fazer backup no Google Drive.
+
+CAPTURAR A TELA
+Mantenha pressionados ao mesmo tempo o botão liga/desliga e o botão de diminuir volume.
+Para visualizar a captura, abra Fotos > Capturas de tela.

@@ -1,0 +1,38 @@
+Produto: Brother MFC-J4620DW / MFC-J4625DW.
+Fonte: cv_mfc4620dw_epr_busr_leu359065.pdf.
+
+VERIFICAR A QUALIDADE E LIMPAR O CABEÇOTE
+No painel, acesse Definiç. > Manutenção > Melhorar qualidade impress. > Verificar qualidade de impr.
+Imprima a folha de verificação e observe se existem falhas.
+Selecione na tela o exemplo que corresponde ao resultado e siga as instruções para realizar a limpeza.
+
+Se o problema persistir após cinco limpezas, instale um cartucho original novo da cor com problema e tente a limpeza novamente, até cinco vezes.
+
+PAPEL ENCRAVADO NA PARTE FRONTAL
+Puxe a gaveta de papel.
+Remova o papel preso e verifique a aba de desencravamento e o interior do equipamento.
+
+PAPEL ENCRAVADO NA PARTE TRASEIRA
+Abra a tampa de desencravamento traseira e a tampa interior.
+Verifique e remova o papel preso.
+
+ENCRAVAMENTOS RECORRENTES
+Acesse Definiç. > Manutenção > Retirar pedaços de papel.
+Siga as instruções exibidas para utilizar a folha de manutenção ou papel espesso.
+
+MENSAGEM ABSORVEDOR DE TINTA CHEIO OU QUASE CHEIO
+A substituição dos componentes deve ser realizada pela assistência técnica.
+
+MENSAGEM IMPOSSÍVEL IMPRIMIR / SUBSTITUA TINTA
+Substitua o cartucho vazio.
+
+MENSAGEM PAPEL ERRADO
+Verifique o tamanho do papel colocado na gaveta.
+Ajuste a configuração correspondente no menu Defin. gaveta.
+
+MENSAGEM NÃO DETETADO
+Reinstale firmemente o cartucho original Brother.
+
+PROBLEMAS DE CONEXÃO WI-FI
+Verifique o código de erro no relatório de LAN sem fios.
+Para o procedimento de instalação da rede sem fios, este manual remete ao Guia de Instalação Rápida.
