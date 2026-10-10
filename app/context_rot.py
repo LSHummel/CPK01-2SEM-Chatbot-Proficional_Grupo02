@@ -24,14 +24,12 @@ if not api_key:
         "OLLAMA_API_KEY não encontrada. Crie um arquivo .env na raiz do projeto."
     )
 
+
+os.environ["OLLAMA_HOST"] = "https://ollama.com"
+os.environ["OLLAMA_API_KEY"] = api_key
+
 llm = ChatOllama(
     model="gemma4:cloud",
-    base_url="https://ollama.com",
-    client_kwargs={
-        "headers": {
-            "Authorization": f"Bearer {api_key}"
-        }
-    },
     temperature=0.0,
     num_predict=150,
 )
